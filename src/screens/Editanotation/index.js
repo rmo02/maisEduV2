@@ -5,12 +5,12 @@ import { Text,
     TouchableOpacity,
     FlatList,
     ScrollView, } from "react-native";
-import { styles } from "./styles";
+import { styles } from "./style";
 
-export function Perfil() {
+export function EditAnotation() {
     return (
         <View style={styles.container}>
-            <Text>Perfil</Text>
+            <Text>EditAnotation</Text>
         </View>
     )
 }

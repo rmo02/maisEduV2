@@ -12,11 +12,26 @@ import { AppHeader } from "../../components/AppHeader";
 import { MateriaItem } from "../../components/Materias";
 import { AuthContext } from "../../context/AuthContext";
 import theme from "../../theme";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import api from "../../api/api";
 
 export function Aulas() {
-  // const { userInfo } = useContext(AuthContext);
+  const { userInfo } = useContext(AuthContext);
   const [materias, setMaterias] = useState([]);
+
+  async function getMaterias () {
+    try {
+      const res = await api.get(`/disciplinasAluno/${userInfo.user.id}`);
+      setMaterias(res.data["disciplinas"]);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  //get nas aulas
+  useEffect(() => {
+    getMaterias();
+  }, []);
 
   return (
     <View style={styles.Container}>

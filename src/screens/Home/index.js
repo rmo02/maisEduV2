@@ -16,36 +16,36 @@ import { AppHeader } from "../../components/AppHeader";
 import theme from "../../theme";
 
 export function Home() {
-  //   const { userInfo } = useContext(AuthContext);
+    const { userInfo } = useContext(AuthContext);
     const [fav, setFav] = useState([]);
     const [aulas, setAulas] = useState([]);
-  //   const navigation = useNavigation();
+    const navigation = useNavigation();
     const limite = 30;
 
-  //   // get nos favoritos
-  //   const getFav = async () => {
-  //     try {
-  //       const res = await api.get(`/favoritos/${userInfo.user.id}`);
-  //       setFav(res.data["favoritos"]);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+    // get nos favoritos
+    const getFav = async () => {
+      try {
+        const res = await api.get(`/favoritos/${userInfo.user.id}`);
+        setFav(res.data["favoritos"]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  //   // get nas ultimas aulas
-  //   const getAulas = async () => {
-  //     try {
-  //       const res = await api.get(`/ultimasAulas/${userInfo.user.id}`);
-  //       setAulas(res.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+    // get nas ultimas aulas
+    const getAulas = async () => {
+      try {
+        const res = await api.get(`/ultimasAulas/${userInfo.user.id}`);
+        setAulas(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  //   useEffect(() => {
-  //     getFav();
-  //     getAulas();
-  //   }, []);
+    useEffect(() => {
+      getFav();
+      getAulas();
+    }, []);
 
   return (
     <View style={styles.Container}>

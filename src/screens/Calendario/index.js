@@ -1,13 +1,15 @@
-import {  View,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    Dimensions,
-    RefreshControl,
-    KeyboardAvoidingView,
-    Animated,
-    Platform,
-    ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Dimensions,
+  RefreshControl,
+  KeyboardAvoidingView,
+  Animated,
+  Platform,
+  ScrollView,
+} from "react-native";
 import { styles } from "./styles";
 import { AppHeader } from "../../components/AppHeader";
 import theme from "../../theme";
@@ -17,100 +19,100 @@ import RBSheet from "react-native-raw-bottom-sheet";
 import MaskInput from "react-native-mask-input";
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { Feather } from "@expo/vector-icons";
+
 import api from "../../api/api";
 
 const windowHeight = Dimensions.get("window").height;
 
 export function Calendario() {
-    const refRBSheet = useRef();
-    const [titulo, setTitulo] = useState("");
-    const [descricao, setDescricao] = useState("");
-    const [date, setDate] = useState();
-    const [inicio, setInicio] = useState("");
-    const [fim, setFim] = useState("");
-    const [lembretes, setLembretes] = useState([]);
-    const [data, setData] = useState("");
-    // const { userInfo } = useContext(AuthContext);
-    const [refreshing, setRefreshing] = useState(false);
-    const horaMask = [/\d/, /\d/, ":", /\d/, /\d/];
-    const dataMask = [/\d/, /\d/, /\d/, /\d/, "-", /\d/, /\d/, "-", /\d/, /\d/];
-    const limite = 10;
+  const refRBSheet = useRef();
+  const [titulo, setTitulo] = useState("");
+  const [descricao, setDescricao] = useState("");
+  const [date, setDate] = useState();
+  const [inicio, setInicio] = useState("");
+  const [fim, setFim] = useState("");
+  const [lembretes, setLembretes] = useState([]);
+  const [data, setData] = useState("");
+  const { userInfo } = useContext(AuthContext);
+  const [refreshing, setRefreshing] = useState(false);
+  const horaMask = [/\d/, /\d/, ":", /\d/, /\d/];
+  const dataMask = [/\d/, /\d/, /\d/, /\d/, "-", /\d/, /\d/, "-", /\d/, /\d/];
+  const limite = 10;
 
-    useEffect(() => {
-        getLembrete();
-      }, []);
-    
-      // timer da atualização da página
-      const wait = (timeout) => {
-        return new Promise((resolve) => setTimeout(resolve, timeout));
-      };
-    
-      // atualizar página
-      const onRefresh = useCallback(() => {
-        setRefreshing(true);
-        wait(2000).then(() => getLembrete(), setRefreshing(false));
-      }, []);
+  useEffect(() => {
+    getLembrete();
+  }, []);
 
-      //post Lembrete
-      const postLembrete = async () => {
-        try {
-          const res = await api.post(`/lembretes`, {
-            title: titulo,
-            description: descricao,
-            data: date,
-            start: `${date} ${inicio}`,
-            end: `${date} ${fim}`,
-            id_aluno: `${userInfo.user.id}`,
-          });
-          if (res.status === 201) {
-            // showToasts();
-            setTimeout(() => {
-              refRBSheet.current.close();
-              onRefresh();
-            }, 1000);
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      };
-    
-    
-      // getLembretes
-      const getLembrete = async () => {
-        try {
-          const res = await api.get(`/lembretesByAluno/${userInfo.user.id}`);
-          setLembretes(res.data["lembretes"]);
-        } catch (error) {
-          throw error;
-        }
-      };
-    
-      // Deletar Lembrete
-      const delLembretes = async (id) => {
-        try {
-          const res = await api.delete(`/lembretes/${id}`);
-          if (res.status === 204) {
-            // showToastDel();
-            setTimeout(() => {
-              onRefresh();
-            }, 3000);
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      };
-    
+  // timer da atualização da página
+  const wait = (timeout) => {
+    return new Promise((resolve) => setTimeout(resolve, timeout));
+  };
 
-    return (
-        <View style={styles.container}>
-            <AppHeader />
-            <View style={[styles.shadowProp, styles.calendar]}>
-            <Agenda setDate={setDate} lembretes={lembretes}/>
-            </View>
+  // atualizar página
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    wait(2000).then(() => getLembrete(), setRefreshing(false));
+  }, []);
 
-                  {/* Cards Lembretes */}
+  //post Lembrete
+  const postLembrete = async () => {
+    try {
+      const res = await api.post(`/lembretes`, {
+        title: titulo,
+        description: descricao,
+        data: date,
+        start: `${date} ${inicio}`,
+        end: `${date} ${fim}`,
+        id_aluno: `${userInfo.user.id}`,
+      });
+      if (res.status === 201) {
+        // showToasts();
+        setTimeout(() => {
+          refRBSheet.current.close();
+          onRefresh();
+        }, 1000);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // getLembretes
+  const getLembrete = async () => {
+    try {
+      const res = await api.get(`/lembretesByAluno/${userInfo.user.id}`);
+      setLembretes(res.data["lembretes"]);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  // Deletar Lembrete
+  const delLembretes = async (id) => {
+    try {
+      const res = await api.delete(`/lembretes/${id}`);
+      if (res.status === 204) {
+        // showToastDel();
+        setTimeout(() => {
+          onRefresh();
+        }, 3000);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <AppHeader />
+      <View style={[styles.shadowProp, styles.calendar]}>
+        <Agenda setDate={setDate} lembretes={lembretes} />
+      </View>
+
+      {/* Cards Lembretes */}
       <ScrollView
-      showsVerticalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={getLembrete} />
         }
@@ -137,16 +139,17 @@ export function Calendario() {
                 <Text
                   style={{ color: "#3B5BDB", marginLeft: 10, marginTop: 20 }}
                 >
-                  {avisos.start.slice(11,16) + " - " + avisos.end.slice(11,16)}
+                  {avisos.start.slice(11, 16) +
+                    " - " +
+                    avisos.end.slice(11, 16)}
                 </Text>
               </View>
             </View>
           ))}
         </View>
       </ScrollView>
-        
-      <View>
 
+      <View>
         {/* BottomSheet */}
         <RBSheet
           ref={refRBSheet}
@@ -170,15 +173,11 @@ export function Calendario() {
           }}
         >
           <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
           >
             <View style={{ paddingHorizontal: 20, paddingVertical: 30 }}>
               {/* Titulo */}
-              <Text
-                style={styles.textBottom}
-              >
-                Título
-              </Text>
+              <Text style={styles.textBottom}>Título</Text>
               <View style={{ marginTop: 10, marginBottom: 10 }}>
                 <TextInput
                   style={styles.Input}
@@ -188,11 +187,7 @@ export function Calendario() {
                 />
               </View>
               {/* Descricao */}
-              <Text
-               style={styles.textBottom}
-              >
-                Descrição
-              </Text>
+              <Text style={styles.textBottom}>Descrição</Text>
               <View style={{ marginTop: 10, marginBottom: 10 }}>
                 <TextInput
                   maxLength={30}
@@ -203,11 +198,7 @@ export function Calendario() {
                 />
               </View>
               {/* data */}
-              <Text
-                style={styles.textBottom}
-              >
-                Data
-              </Text>
+              <Text style={styles.textBottom}>Data</Text>
               <View style={{ marginTop: 10 }}>
                 <MaskInput
                   placeholder="Data do evento"
@@ -226,17 +217,9 @@ export function Calendario() {
                   justifyContent: "space-between",
                 }}
               >
-                <Text
-                 style={styles.textBottom}
-                >
-                  Início
-                </Text>
+                <Text style={styles.textBottom}>Início</Text>
                 <View>
-                  <Text
-                  style={styles.textBottom}
-                  >
-                    Fim
-                  </Text>
+                  <Text style={styles.textBottom}>Fim</Text>
                 </View>
                 <Text></Text>
               </View>
@@ -312,7 +295,6 @@ export function Calendario() {
             </View>
           </KeyboardAvoidingView>
         </RBSheet>
-        
       </View>
       <FAB
         icon="plus"
@@ -320,6 +302,6 @@ export function Calendario() {
         style={styles.fab}
         onPress={() => refRBSheet.current.open()}
       />
-        </View>
-    )
+    </View>
+  );
 }

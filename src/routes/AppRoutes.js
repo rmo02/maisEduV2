@@ -10,6 +10,10 @@ import { Anotation } from "../screens/Anotation";
 import { Aulas } from "../screens/Aulas";
 import { Conquistas } from "../screens/Conquistas";
 import { Calendario } from "../screens/Calendario";
+import { Perfil } from "../screens/Perfil";
+import { EditAnotation } from "../screens/Editanotation";
+import { CreateAnotation } from "../screens/CreateAnotation";
+import { Conteudos } from "../screens/Conteudos";
 
 
 
@@ -48,13 +52,6 @@ export function AppRoutes(){
         component={Perfil}
         options={{ headerTransparent: true, headerShown: false, title: "" }}
         />
-
-        {/* <Stack.Screen
-          name='Conteudos'
-          component={Conteudos}
-          options={{ headerTransparent: true, headerShown: false, title: "" }}
-        />
-
         <Stack.Screen
         name="EditAnotation"
         component={EditAnotation}
@@ -66,6 +63,14 @@ export function AppRoutes(){
         component={CreateAnotation}
         options={{ headerTransparent: true, headerShown: false, title: "" }}
         />
+
+        <Stack.Screen
+          name='Conteudos'
+          component={Conteudos}
+          options={{ headerTransparent: true, headerShown: false, title: "" }}
+        />
+        
+        {/* 
 
         <Stack.Screen
         name="MinhasNotas"

@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { AppRoutes } from './stack.routes';
+import { AppRoutes } from './AppRoutes';
 
 export function Routes() {
     return (

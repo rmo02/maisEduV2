@@ -6,9 +6,6 @@ import { Image } from 'react-native-expo-image-cache';
 //componente das matérias dos alunos
 
 export function MateriaItem({ id, name, bk_img}) {
-  
-
-
 
    const navigation = useNavigation();
     return (

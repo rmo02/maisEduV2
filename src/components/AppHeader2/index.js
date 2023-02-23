@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 import { Surface } from "react-native-paper";
-import Icon2 from "react-native-vector-icons/MaterialIcons";
-import Icon3 from "react-native-vector-icons/AntDesign";
+import { MaterialIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
-import { styles } from "./style";
+import { styles } from "./styles";
 
 
 export const AppHeader2 = ({ nomeProfessor = "" }) => {
@@ -22,7 +22,7 @@ export const AppHeader2 = ({ nomeProfessor = "" }) => {
       >
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <View style={{ marginLeft: 15 }}>
-            <Icon3
+            <AntDesign
               name="arrowleft"
               size={25}
               color="#fff"
@@ -46,7 +46,7 @@ export const AppHeader2 = ({ nomeProfessor = "" }) => {
 
         <View style={{ flexDirection: "row", marginHorizontal: 10 }}>
           <View style={{ marginHorizontal: 20 }}>
-            <Icon2
+            <MaterialIcons
               name="notifications-none"
               size={25}
               color="#fff"
@@ -55,7 +55,7 @@ export const AppHeader2 = ({ nomeProfessor = "" }) => {
           </View>
 
           <View>
-            <Icon2
+            <MaterialIcons
               name="person"
               size={25}
               color="#fff"

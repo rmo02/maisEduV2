@@ -9,19 +9,21 @@ import {
   FlatList,
   ScrollView,
   TextInput,
+  RefreshControl,
 } from "react-native";
 import { styles } from "./style";
 import api from "../../api/api";
 import { AppHeader } from "../../components/AppHeader";
 import theme from "../../theme";
-import { Feather as Icon2} from "@expo/vector-icons";
+import { Feather } from '@expo/vector-icons';
 import { FAB } from "react-native-paper";
+import { AuthContext } from "../../context/AuthContext";
 
 
 
 export function Anotation() {
-  // const { userInfo } = useContext(AuthContext);
-  // const navigation = useNavigation();
+  const { userInfo } = useContext(AuthContext);
+  const navigation = useNavigation();
   const [note, setNote] = useState([]);
   var listaNotes = [];
   const [refreshing, setRefreshing] = useState(false);
@@ -97,7 +99,7 @@ export function Anotation() {
           placeholder="Pequisar"
             style={styles.inputSearch}
           />
-            <Icon2 name="search" size={25} color={theme.COLORS.TEXT} />
+            <Feather name="search" size={25} color={theme.COLORS.TEXT} />
         </View>
       </View>
 
@@ -121,9 +123,9 @@ export function Anotation() {
             {note.map((notes) => (
               <TouchableOpacity
                 key={notes.id}
-                // onPress={() =>
-                //   navigation.navigate("EditAnotation", { id: `${notes.id}` })
-                // }
+                onPress={() =>
+                  navigation.navigate("EditAnotation", { id: `${notes.id}` })
+                }
               >
                 <View style={styles.card} key={notes.id}>
                   <View
@@ -148,7 +150,6 @@ export function Anotation() {
                 </View>
               </TouchableOpacity>
             ))}
-
           </View>
         </ScrollView>
       )}
@@ -156,7 +157,7 @@ export function Anotation() {
         icon="plus"
         color="white"
         style={styles.fab}
-        // onPress={() => navigation.navigate("CreateAnotation")}
+        onPress={() => navigation.navigate("CreateAnotation")}
       />
     </View>
   );

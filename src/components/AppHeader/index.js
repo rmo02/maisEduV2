@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { styles } from "./styles";
 
 export const AppHeader = () => {
-    // const navigation = useNavigation();
+    const navigation = useNavigation();
     return (
         <Surface style={styles.header}>
             <View style={styles.boxLogo}>
@@ -25,7 +25,7 @@ export const AppHeader = () => {
                     name='person'
                     size={25}
                     color='#fff'
-                    // onPress={() => navigation.navigate("Perfil")}
+                    onPress={() => navigation.navigate("Perfil")}
                 />
             </View>
         </Surface>

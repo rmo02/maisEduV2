@@ -17,6 +17,10 @@ export function Login () {
     const [password, setPassword] = useState(null);
     const { isLoading, login, } = useContext(AuthContext);
 
+    const onSubmit = (mat, password ) => {
+      login(mat,password)
+    };
+
     return (
         <KeyboardAvoidingView
         style={{ flex: 1 }}
