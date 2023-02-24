@@ -14,6 +14,12 @@ import { Perfil } from "../screens/Perfil";
 import { EditAnotation } from "../screens/Editanotation";
 import { CreateAnotation } from "../screens/CreateAnotation";
 import { Conteudos } from "../screens/Conteudos";
+import { VideoAulas } from "../screens/VideoAulas";
+import { AnotationAula } from "../screens/AnotationAula";
+import { Chat } from "../screens/Chat";
+import { AtividadeInicio } from "../screens/AtividadeInicio";
+import { Atividade } from "../screens/Atividade";
+
 
 
 
@@ -69,6 +75,36 @@ export function AppRoutes(){
           component={Conteudos}
           options={{ headerTransparent: true, headerShown: false, title: "" }}
         />
+
+        <Stack.Screen
+        name="VideoAulas"
+        component={VideoAulas}
+        options={{ headerTransparent: true, headerShown: false, title: "" }}
+        />
+
+        <Stack.Screen
+        name="Chat"
+        component={Chat}
+        options={{ headerTransparent: true, headerShown: false, title: "" }}
+        />
+
+        <Stack.Screen
+        name="AnotationAula"
+        component={AnotationAula}
+        options={{ headerTransparent: true, headerShown: false, title: "" }}
+        />
+
+        <Stack.Screen
+        name="AtividadeInicio"
+        component={AtividadeInicio}
+        options={{ headerTransparent: true, headerShown: false, title: "" }}
+        />
+
+        <Stack.Screen
+        name="Atividade"
+        component={Atividade}
+        options={{ headerTransparent: true, headerShown: false, title: "", gestureEnabled: false }}
+        />
         
         {/* 
 
@@ -98,37 +134,7 @@ export function AppRoutes(){
         options={{ headerTransparent: true, headerShown: false, title: "" }}
         />
 
-        <Stack.Screen
-        name="AtividadeInicio"
-        component={AtividadeInicio}
-        options={{ headerTransparent: true, headerShown: false, title: "" }}
-        />
-
-        <Stack.Screen
-        name="Atividade"
-        component={Atividade}
-        options={{ headerTransparent: true, headerShown: false, title: "", gestureEnabled: false }}
-        />
-
-        <Stack.Screen
-        name="AnotationAula"
-        component={AnotationAula}
-        options={{ headerTransparent: true, headerShown: false, title: "" }}
-        />
-
-
-
-        <Stack.Screen
-        name="VideoAulas"
-        component={VideoAulas}
-        options={{ headerTransparent: true, headerShown: false, title: "" }}
-        />
-
-        <Stack.Screen
-        name="Chat"
-        component={Chat}
-        options={{ headerTransparent: true, headerShown: false, title: "" }}
-        /> */}
+ */}
 
 
       </Stack.Group>

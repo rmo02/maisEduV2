@@ -5,7 +5,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import { styles } from "./styles";
-
+import theme from "../../theme";
 
 export const AppHeader2 = ({ nomeProfessor = "" }) => {
   const navigation = useNavigation();
@@ -39,7 +39,7 @@ export const AppHeader2 = ({ nomeProfessor = "" }) => {
                 source={require("../../../assets/logo.png")}
               />
             ) : (
-              <Text style={{fontSize:18, color:'white', fontFamily:'Medium'}}>{nomeProfessor}</Text>
+              <Text style={{fontSize:18, color:'white', fontFamily:theme.FONT_FAMILY.MEDIUM}}>{nomeProfessor}</Text>
             )}
           </View>
         </View>
