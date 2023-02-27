@@ -19,6 +19,10 @@ import { AnotationAula } from "../screens/AnotationAula";
 import { Chat } from "../screens/Chat";
 import { AtividadeInicio } from "../screens/AtividadeInicio";
 import { Atividade } from "../screens/Atividade";
+import { MinhasNotas } from "../screens/MinhasNotas";
+import { Classificacao } from "../screens/Classificacao";
+import { Configuracao } from "../screens/Configuracao";
+import { TrocarSenha } from "../screens/TrocarSenha";
 
 
 
@@ -105,8 +109,6 @@ export function AppRoutes(){
         component={Atividade}
         options={{ headerTransparent: true, headerShown: false, title: "", gestureEnabled: false }}
         />
-        
-        {/* 
 
         <Stack.Screen
         name="MinhasNotas"
@@ -115,26 +117,23 @@ export function AppRoutes(){
         />
 
         <Stack.Screen
+        name="Classificacao"
+        component={Classificacao}
+        options={{ headerTransparent: true, headerShown: false, title: "" }}
+        />
+        
+        <Stack.Screen
         name="Configuracao"
         component={Configuracao}
         options={{ headerTransparent: true, headerShown: false, title: "" }}
         />
+
 
         <Stack.Screen
         name="TrocarSenha"
         component={TrocarSenha}
         options={{ headerTransparent: true, headerShown: false, title: "" }}
         />
-
-
-
-        <Stack.Screen
-        name="Classificacao"
-        component={Classificacao}
-        options={{ headerTransparent: true, headerShown: false, title: "" }}
-        />
-
- */}
 
 
       </Stack.Group>
