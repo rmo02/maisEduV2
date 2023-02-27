@@ -11,25 +11,42 @@ import { GiftedChat } from "react-native-gifted-chat";
 import socketServices from "../../util/socketServices";
 import { AuthContext } from "../../context/AuthContext";
 
-export function Chat({ route }){
-    const [messages, setMessages] = useState([]);
-    const { userInfo } = useContext(AuthContext);
-    const [idSala, setIdSala] = useState("");
-    const [previousMessages, setPreviousMessages] = useState([]);
-  
-    let id_professor = route.params.idProfessor;
-    let nomeProfessor = route.params.nomeProfessor;
-    let id_aluno = userInfo.user.id;
-    let id_alunoSenha = userInfo.user.id_senha;
+export const Chat = ({ route }) => {
+  const [messages, setMessages] = useState([]);
+  const { userInfo } = useContext(AuthContext);
+  const [idSala, setIdSala] = useState("");
+  const [previousMessages, setPreviousMessages] = useState([]);
 
-      //carregando mgs antigas
+  let id_professor = route.params.idProfessor;
+  let nomeProfessor = route.params.nomeProfessor;
+  let id_aluno = userInfo.user.id;
+  let id_alunoSenha = userInfo.user.id_senha;
+
+  //inicializando sala
+  useEffect(() => {
+    socketServices.emit(
+      "select_room",
+      {
+        id_connected: id_aluno,
+        id_professor,
+        id_aluno,
+        type: 'mobile'
+      },
+      (res) => {
+        setIdSala(res.room_id);
+        setPreviousMessages(res.messages);
+      }
+    );
+    onLoadEarlier();
+  }, []);
+
+  //carregando mgs antigas
   useEffect(() => {
     setMessages(previousMessages);
   }, []);
 
   //enviar mensagens
   const onSend = (messages = []) => {
-    console.log("messagens", messages)
     socketServices.emit("send_message", messages, (res) => {
       console.log("Mensagem enviada", res);
     });
@@ -73,4 +90,4 @@ export function Chat({ route }){
       </View>
     </View>
   );
-}
+};
