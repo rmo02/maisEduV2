@@ -1,4 +1,6 @@
+import { useNavigation } from "@react-navigation/native";
 import { Text, View, TouchableOpacity, ImageBackground } from "react-native";
+import { ImageSlider } from "react-native-image-slider-banner";
 import { styles } from "./styles";
 
 export function AtividadeInicio({ route }) {
@@ -25,6 +27,7 @@ export function AtividadeInicio({ route }) {
           <Text style={styles.titleAtividade}>{title}</Text>
         </View>
         {/* Instruções sobre a atividade */}
+        
         <View style={{ height: "60%" }}>
           <ImageSlider
             data={[

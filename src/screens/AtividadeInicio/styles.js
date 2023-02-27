@@ -1,14 +1,15 @@
 import { StyleSheet } from "react-native";
+import theme from "../../theme";
 
 export const styles = StyleSheet.create({
   Container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
   titleAtividade: {
     color: "#EEBC4E",
-    fontFamily: "Bold",
+    fontFamily: theme.FONT_FAMILY.BOLD,
     fontSize: 28,
     textAlign: "center",
     paddingHorizontal: 15,
@@ -23,7 +24,6 @@ export const styles = StyleSheet.create({
   containerButton: {
     width: "100%",
     alignItems: "center",
-    justifyContent: "flex-end",
     paddingHorizontal: 20,
     marginBottom: 20,
   },

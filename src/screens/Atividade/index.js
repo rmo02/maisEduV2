@@ -13,7 +13,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
 import api from "../../api/api";
 import socketServicesConquistas from "../../util/socketServicesConquistas";
-// import ToastManager, { Toast } from "toastify-react-native";
+import ToastManager, { Toast } from "toastify-react-native";
 import { styles } from "./styles";
 
 export function Atividade({ route }) {

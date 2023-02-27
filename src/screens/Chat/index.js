@@ -29,6 +29,7 @@ export function Chat({ route }){
 
   //enviar mensagens
   const onSend = (messages = []) => {
+    console.log("messagens", messages)
     socketServices.emit("send_message", messages, (res) => {
       console.log("Mensagem enviada", res);
     });
