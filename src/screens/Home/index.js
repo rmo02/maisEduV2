@@ -79,13 +79,13 @@ export function Home() {
             renderItem={({ item }) => (
               <View style={styles.Image}>
                 <TouchableOpacity
-                  // onPress={() =>
-                  //   navigation.navigate("VideoAulas", {
-                  //     id: `${item.conteudo}`,
-                  //     file: `${item.file}`,
-                  //     title: `${item.title}`
-                  //   })
-                  // }
+                  onPress={() =>
+                    navigation.navigate("VideoAulas", {
+                      id: `${item.conteudo}`,
+                      file: `${item.file}`,
+                      title: `${item.title}`
+                    })
+                  }
                 >
                   <Image
                     source={{ uri: `${item.thumb}` }}
@@ -126,13 +126,13 @@ export function Home() {
             renderItem={({ item }) => (
               <View style={styles.Image}>
                 <TouchableOpacity
-                  // onPress={() =>
-                  //   navigation.navigate("VideoAulas", {
-                  //     id: `${item.conteudo}`,
-                  //     file: `${item.file}`,
-                  //     title: `${item.title}`
-                  //   })
-                  // }
+                  onPress={() =>
+                    navigation.navigate("VideoAulas", {
+                      id: `${item.conteudo}`,
+                      file: `${item.file}`,
+                      title: `${item.title}`
+                    })
+                  }
                 >
                   <Image
                     source={{ uri: `${item.thumb}` }}

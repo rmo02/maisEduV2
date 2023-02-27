@@ -1,4 +1,4 @@
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, StatusBar } from 'react-native';
 import { useFonts, Poppins_700Bold, Poppins_400Regular, Poppins_500Medium } from '@expo-google-fonts/poppins';
 import { Provider  } from 'react-native-paper';
 import theme from './src/theme';
@@ -17,6 +17,7 @@ export default function App() {
       fontsLoaded ? <Routes />
       : <ActivityIndicator style={{flex:1, backgroundColor:'#4263EB'}}/>
     }
+    <StatusBar backgroundColor={'transparent'} translucent/>
     </AuthProvider>
     </Provider>
   );

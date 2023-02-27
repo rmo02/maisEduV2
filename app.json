@@ -24,10 +24,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/iconteste.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.rmo02.educacao"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "44933a64-5a43-4397-acee-1c5c581529af"
+      }
     }
   }
 }

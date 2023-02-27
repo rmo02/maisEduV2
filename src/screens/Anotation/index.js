@@ -29,6 +29,13 @@ export function Anotation() {
   const [refreshing, setRefreshing] = useState(false);
   const [searchText, setSearchText] = useState("");
 
+  function handleTags (note) {
+    note?.map((tags) => {
+      setTags(tags.tags)
+      console.log(tags)
+    })
+  }
+
   useEffect(() => {
     if (searchText === "") {
       getAnotacoes();
@@ -103,7 +110,7 @@ export function Anotation() {
         </View>
       </View>
 
-      {note?.length === 0 ? (
+      {note.length === 0 ? (
         <View
           style={{
             justifyContent: "center",

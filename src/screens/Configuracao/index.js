@@ -34,7 +34,7 @@ export function Configuracao(){
         <View styles={styles.container}>
         <AppHeader2 />
         {Platform.OS === "ios" ? (
-            <ScrollView>
+            <ScrollView style={{marginBottom:100}}>
               <View>
                 <Text
                   style={styles.title}
@@ -199,7 +199,7 @@ export function Configuracao(){
               </View>
             </ScrollView>
           ) : (
-            <ScrollView>
+            <ScrollView style={{marginBottom:100}}>
               <View>
                 <Text
                   style={styles.title}

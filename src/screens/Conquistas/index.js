@@ -15,7 +15,7 @@ import theme from "../../theme";
 
 export function Conquistas() {
     const [conquistas, setConquistas] = useState([]);
-    // const { userInfo } = useContext(AuthContext);
+    const { userInfo } = useContext(AuthContext);
   
     const getConquistas = async () => {
       try {
